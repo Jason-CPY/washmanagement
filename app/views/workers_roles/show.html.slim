@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Worker:
+  = @workers_role.worker_id
+p
+  strong Role:
+  = @workers_role.role_id
+
+=> link_to 'Edit', edit_workers_role_path(@workers_role)
+'|
+=< link_to 'Back', workers_roles_path

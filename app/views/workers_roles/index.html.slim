@@ -1,0 +1,23 @@
+h1 Listing workers_roles
+
+table
+  thead
+    tr
+      th Worker
+      th Role
+      th
+      th
+      th
+
+  tbody
+    - @workers_roles.each do |workers_role|
+      tr
+        td = workers_role.worker_id
+        td = workers_role.role_id
+        td = link_to 'Show', workers_role
+        td = link_to 'Edit', edit_workers_role_path(workers_role)
+        td = link_to 'Destroy', workers_role, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Workers role', new_workers_role_path
