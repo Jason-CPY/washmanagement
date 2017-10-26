@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://gems.ruby-china.org/'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -29,7 +29,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
+gem 'jquery-rails'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
@@ -37,10 +37,12 @@ gem 'devise'
 gem 'simple_form'
 gem 'bootstrap-sass'
 gem 'slim-rails'
-gem 'will_paginate'
+gem 'will_paginate', github: 'jonatack/will_paginate'
 gem 'will_paginate-bootstrap'
 gem 'rolify'
 gem 'cancancan'
+gem 'config'
+gem 'qiniu','~>6.8.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

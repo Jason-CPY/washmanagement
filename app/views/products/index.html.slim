@@ -1,0 +1,31 @@
+h1 Listing products
+
+table
+  thead
+    tr
+      th Name
+      th Logo
+      th Is del
+      th Category
+      th
+      th
+      th
+
+  tbody
+    - @products.each do |product|
+      tr
+        td width='10%' = product.name
+        td width='10%' = image_tag qiniu_url(product.logo), size: '150x150'
+        td width='10%' = product.is_del
+        td width='10%' = product.category_id
+        td width='10%' = link_to 'Show', product
+        td width='10%' = link_to 'Edit', edit_product_path(product)
+        td
+          - if product.is_del
+            = link_to 'Recover', product, data: { confirm: 'Are you sure?' }, method: :recover
+          - else
+            = link_to 'Destroy', product, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Product', new_product_path

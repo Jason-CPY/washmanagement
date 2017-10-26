@@ -1,0 +1,11 @@
+tr
+  td = product.name
+  td = image_tag qiniu_url(product.logo), size: '150x150'
+  td = product.is_del
+  td = link_to 'Edit', edit_category_product_path(@category, product)
+
+  td
+  	- if product.is_del
+   		= link_to 'Recover', product, data: { confirm: 'Are you sure?' }, method: :recover
+  	- else
+   		= link_to 'Destroy', product, data: { confirm: 'Are you sure?' }, method: :delete

@@ -11,6 +11,7 @@ p, ol, ul, td {
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;
   line-height: 18px;
+  
 }
 
 pre {
@@ -20,8 +21,6 @@ pre {
 }
 
 a {
-  
-
   color: #000;
 
   &:visited {
@@ -44,10 +43,9 @@ td {
 
 div {
   &.field, &.actions {
-    text-align: center;
     margin-bottom: 10px;
   }
-} 
+}
 
 #notice {
   color: green;
@@ -84,8 +82,4 @@ div {
 
 label {
   display: block;
-}
-
-h2 {
-  text-align: center;
 }
