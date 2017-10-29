@@ -13,13 +13,15 @@ Rails.application.routes.draw do
   resources :roles
 
   resources :categories do
-    resources :products
+    member do 
+      get :recover
+    end
+    resources :products do
+      member do 
+      get :recover
+    end
+    end
   end
-
-  post '/categories/:id', :to => 'categories#recover'
-  # post '/categories/:categories_id', :to => 'products#destroy'
-  post '/products/:id', :to => 'products#recover'
-  post '/products/:id', :to => 'products#destroy'
 
 
 end

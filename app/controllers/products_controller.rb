@@ -2,12 +2,13 @@ class ProductsController < ApplicationController
   load_and_authorize_resource
   
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  # before_action :set_category
+  before_action :set_category
 
   # GET /products
   # GET /products.json
   def index
     @products = Product.all
+    # @category = Category.find(params[:category_id])
   end
 
   # GET /products/1
@@ -28,6 +29,7 @@ class ProductsController < ApplicationController
   # POST /products.json
   def create
     params = product_params
+    # @category = Category.find(params[:category_id])
     if params['logo']
       filename = generate_filename
       Image.upload(params['logo'].tempfile.path, filename)
@@ -73,18 +75,17 @@ class ProductsController < ApplicationController
   def destroy
     @product.update_attribute(:is_del, true)
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully destroyed.' }
+      format.html { redirect_to categories_url+"/"+(@category.id).to_s, notice: 'Product was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def recover
-
     @product.update_attribute(:is_del, false)
     @category = Category.find(@product.category_id)
     @category.update_attribute(:is_del, false)
     respond_to do |format|
-      format.html { redirect_to products_url, notice: 'Product was successfully recovered.' }
+      format.html { redirect_to categories_url+"/"+(@category.id).to_s, notice: 'Product was successfully recovered.' }
       format.json { head :no_content }
     end
   end
@@ -99,7 +100,7 @@ class ProductsController < ApplicationController
   # Use callbacks to share common setup or constraints between actions.
   def set_product
     @product = Product.find(params[:id])
-    @category = Category.find(@product.category_id)
+    # @category = Category.find(@product.category_id)
   end
 
   # Never trust parameters from the scary internet, only allow the white list through.

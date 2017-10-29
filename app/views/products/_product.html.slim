@@ -6,6 +6,6 @@ tr
 
   td
   	- if product.is_del
-   		= link_to 'Recover', product, data: { confirm: 'Are you sure?' }, method: :recover
+   		= link_to 'Recover', recover_category_product_path(@category, product), data: { confirm: 'Are you sure?' }
   	- else
-   		= link_to 'Destroy', product, data: { confirm: 'Are you sure?' }, method: :delete
+   		= link_to 'Destroy', category_product_path(@category, product), data: { confirm: 'Are you sure?' }, method: :delete

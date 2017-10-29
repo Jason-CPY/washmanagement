@@ -9,14 +9,21 @@ br
 
 table.table.table-striped.no-border
   tr
-    td width='25%' Logo
-    td width='25%' = image_tag qiniu_url(@category.logo), size: '150x150'
-    td width='25%' Is del
-    td width='25%' 
+    td width='10%' 
+    td width='20%' category_id
+    td width='20%' Logo
+    td width='20%' Is del
+    td width='20%' 
+    tr
+    th
+    th width='20%' = @category.id
+    th width='20%' = image_tag qiniu_url(@category.logo), size: '150x150'
+    th width='20%' 
       - if @category.is_del
         span.label.label-primary 是
       - else
         span.label.label-default 否
+    th
 
 
 
