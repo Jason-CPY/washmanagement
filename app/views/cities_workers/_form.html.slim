@@ -1,0 +1,12 @@
+= form_for @cities_worker do |f|
+  - if @cities_worker.errors.any?
+    #error_explanation
+      h2 = "#{pluralize(@cities_worker.errors.count, "error")} prohibited this cities_worker from being saved:"
+      ul
+        - @cities_worker.errors.full_messages.each do |message|
+          li = message
+
+  .field
+    = f.label :city
+    = f.text_field :city
+  .actions = f.submit

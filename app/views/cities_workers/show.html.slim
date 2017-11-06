@@ -1,0 +1,9 @@
+p#notice = notice
+
+p
+  strong City:
+  = @cities_worker.city
+
+=> link_to 'Edit', edit_cities_worker_path(@cities_worker)
+'|
+=< link_to 'Back', cities_workers_path

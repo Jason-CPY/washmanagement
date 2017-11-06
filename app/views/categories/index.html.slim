@@ -5,7 +5,7 @@
     table.table.table-striped
       thead
         tr
-          th Name
+          th#abc Name
           th Logo
           th Is del
           th
@@ -24,11 +24,7 @@
                 span.label.label-default 否 
             td = link_to 'Show', category
             td = link_to 'Edit', edit_category_path(category)
-            td
-              - if category.is_del
-               = link_to 'Recover', recover_category_path(category), data: { confirm: 'Are you sure?' }
-              - else
-               = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete
+            td = link_to 'Destroy', category, data: { confirm: 'Are you sure?' }, method: :delete
 
     = will_paginate @categories, renderer: BootstrapPagination::Rails
   .panel-footer

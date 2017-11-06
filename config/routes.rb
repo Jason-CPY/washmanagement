@@ -1,13 +1,10 @@
 Rails.application.routes.draw do
-
-  resources :products
-  resources :categories
-  resources :workers_roles
   devise_for :workers
   
   resources :workers do 
     member do 
       get :reset_password
+      put :change_current_city
     end
   end
   resources :roles
@@ -23,5 +20,14 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :stations do
+  end
 
+  resources :addresses do 
+    collection do 
+      get :suggestion
+    end
+  end
+
+  resources :cities
 end
