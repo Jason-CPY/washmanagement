@@ -14,10 +14,19 @@ class Ability
       can :manage, Category
       can :manage, Product
       can :manage, City
+      can :manage, Price
+      can :manage, User
+      can :manage, UserCardChargeSetting
+      can :manage, CouponList
+      can :manage, OrderPromotion
+      can :manage, Coupon
     end
 
     if worker.has_role?(:fenchengshi)
       can :manage, Station
+      can :manage, Courier
+      can :manage, PriceRule
+      can :manage, Order
     end
   end
 end

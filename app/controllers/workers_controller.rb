@@ -63,7 +63,7 @@ class WorkersController < ApplicationController
 
   def change_current_city
     session[:current_city_id] = params[:city_id]
-    redirect_to edit_worker_path
+    redirect_to :back
   end
 
   private

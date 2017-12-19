@@ -1,4 +1,5 @@
 class CitiesController < ApplicationController
+  load_and_authorize_resource
   before_action :set_city, only: [:show, :edit, :update, :destroy]
 
   # GET /cities
@@ -69,6 +70,6 @@ class CitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def city_params
-      params.require(:city).permit(:name, :region_id, category_ids: [])
+      params.require(:city).permit(:name, category_ids: [])
     end
 end

@@ -1,0 +1,2 @@
+module CreatePricesHelper
+end

@@ -17,8 +17,35 @@
                 li class="#{is_active?('categories', params[:controller])}"
                   = link_to "品类", categories_path
               - if can?(:manage, City)
-                    li class="#{is_active?('cities', params[:controller])}"
-                      = link_to "城市", cities_path
+                li class="#{is_active?('cities', params[:controller])}"
+                  = link_to "城市", cities_path
+              - if can?(:manage, Price)
+                li class="#{is_active?('prices', params[:controller])}"
+                  = link_to "价格管理", prices_path
+              - if can?(:manage, User)
+                li class="#{is_active?('users', params[:controller])}"
+                  = link_to "用户", users_path
+              - if can?(:manage, UserCardChargeSetting)
+                li class="#{is_active?('user_card_charge_settings', params[:controller])}"
+                  = link_to "充值优惠", user_card_charge_settings_path
+              - if can?(:manage, CouponList)
+                li class="#{is_active?('coupon_lists', params[:controller])}"
+                  = link_to "优惠券管理", coupon_lists_path
+          li.dropdown
+            = link_to "分城市管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
+            ul.dropdown-menu
+              - if can?(:manage, Station)
+                li class="#{is_active?('stations', params[:controller])}"
+                  = link_to "站点", stations_path
+              - if can?(:manage, Courier)
+                li class="#{is_active?('couriers', params[:controller])}"
+                  = link_to "取送人员", couriers_path
+              - if can?(:manage, PriceRule)
+                li class="#{is_active?('price_rules', params[:controller])}"
+                  = link_to "价格管理", price_rules_path
+              - if can?(:manage, Order)
+                li class="#{is_active?('orders', params[:controller])}"
+                  = link_to "订单", orders_path
           li.dropdown
             = link_to "系统管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
             ul.dropdown-menu
@@ -28,13 +55,6 @@
               - if can?(:manage, Role)
                 li class="#{is_active?('roles', params[:controller])}"
                   = link_to "角色", roles_path
-              
-          li.dropdown
-            = link_to "分城市管理 <b class='caret'></b>".html_safe, '#', :class => 'dropdown-toggle', data: {toggle: 'dropdown'}
-            ul.dropdown-menu
-              - if can?(:manage, Station)
-                li class="#{is_active?('stations', params[:controller])}"
-                  = link_to "站点", stations_path
 
         ul.nav.navbar-nav.ieCss.pull-right role="presentation"
           .dropdown

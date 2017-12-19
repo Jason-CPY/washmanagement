@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :coupons
+  resources :user_card_charge_settings
+  resources :prices
   devise_for :workers
   
   resources :workers do 
@@ -12,6 +15,8 @@ Rails.application.routes.draw do
   resources :categories do
     member do 
       get :recover
+      get :prices
+      post :init_prices
     end
     resources :products do
       member do 
@@ -30,4 +35,26 @@ Rails.application.routes.draw do
   end
 
   resources :cities
+
+  resources :couriers
+
+  resources :price_rules
+
+  resources :orders do 
+  end
+
+  resources :users do 
+    resources :user_cards do 
+      member do 
+        get :charge
+        post :charge
+      end
+    end
+    resources :coupons
+  end
+
+  resources :coupon_lists do 
+    resources :order_promotions, only: [:new, :create, :edit, :update, :destroy]
+  end
+
 end

@@ -1,0 +1,12 @@
+p#notice = notice
+
+p
+  strong Price1:
+  = @create_price.price1
+p
+  strong Price2:
+  = @create_price.price2
+
+=> link_to 'Edit', edit_create_price_path(@create_price)
+'|
+=< link_to 'Back', create_prices_path

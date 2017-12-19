@@ -1,0 +1,2 @@
+class CreatePrice < ApplicationRecord
+end

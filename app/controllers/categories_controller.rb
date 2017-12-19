@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   load_and_authorize_resource
   
-  before_action :set_category, only: [:show, :edit, :update, :destroy]
+  before_action :set_category, only: [:show, :edit, :update, :destroy, :prices, :init_prices]
 
   # GET /categories
   # GET /categories.json
@@ -87,6 +87,18 @@ class CategoriesController < ApplicationController
       format.html { redirect_to categories_url, notice: 'Category was successfully recovered.' }
       format.json { head :no_content }
     end
+  end
+
+  def prices
+    @prices = @category.prices.paginate(page: params[:page],per_page: 10).order(updated_at: :desc)
+  end
+
+  def init_prices
+    @category.products.each do |product|
+      product.create_price unless product.price
+    end
+
+    redirect_to prices_category_path(@category)
   end
 
   private

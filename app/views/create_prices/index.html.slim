@@ -1,0 +1,23 @@
+h1 Listing create_prices
+
+table
+  thead
+    tr
+      th Price1
+      th Price2
+      th
+      th
+      th
+
+  tbody
+    - @create_prices.each do |create_price|
+      tr
+        td = create_price.price1
+        td = create_price.price2
+        td = link_to 'Show', create_price
+        td = link_to 'Edit', edit_create_price_path(create_price)
+        td = link_to 'Destroy', create_price, data: { confirm: 'Are you sure?' }, method: :delete
+
+br
+
+= link_to 'New Create price', new_create_price_path
